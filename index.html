@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -19,603 +20,604 @@
     --success: #00E676;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Cairo', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Grid BG */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .glow-orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .orb1 { width: 500px; height: 500px; background: rgba(0,212,255,0.07); top: -100px; right: -100px; }
-  .orb2 { width: 400px; height: 400px; background: rgba(123,94,255,0.07); bottom: 100px; left: -100px; }
-
-  /* NAV */
-  nav {
-    position: relative; z-index: 10;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 40px;
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(10px);
-    background: rgba(7,11,20,0.8);
-  }
-
-  .logo {
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 900;
-    font-size: 1.4rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: -0.5px;
-  }
-
-  .nav-badge {
-    background: rgba(0,212,255,0.1);
-    border: 1px solid rgba(0,212,255,0.3);
-    color: var(--accent);
-    padding: 6px 16px;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-
-  /* HERO */
-  .hero {
-    position: relative; z-index: 1;
-    text-align: center;
-    padding: 80px 20px 60px;
-  }
-
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,184,0,0.1);
-    border: 1px solid rgba(255,184,0,0.3);
-    color: var(--gold);
-    padding: 8px 20px;
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 30px;
-    animation: fadeDown 0.6s ease;
-  }
-
-  .hero-tag::before { content: '⚡'; }
-
-  h1 {
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    line-height: 1.15;
-    margin-bottom: 20px;
-    animation: fadeDown 0.7s ease;
-  }
-
-  h1 span {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 500px;
-    margin: 0 auto 40px;
-    line-height: 1.8;
-    animation: fadeDown 0.8s ease;
-  }
-
-  /* PRODUCT CARD */
-  .product-wrapper {
-    position: relative; z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-  }
-
-  .product-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    overflow: hidden;
-    animation: fadeUp 0.8s ease;
-    position: relative;
-  }
-
-  .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent2), var(--accent));
-  }
-
-  .product-banner {
-    background: linear-gradient(135deg, #0D1525, #111C30);
-    padding: 50px 40px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    border-bottom: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-
-  .product-icon {
-    width: 90px; height: 90px;
-    background: linear-gradient(135deg, var(--accent2), var(--accent));
-    border-radius: 22px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem;
-    flex-shrink: 0;
-    box-shadow: 0 20px 60px rgba(0,212,255,0.2);
-  }
-
-  .product-info { flex: 1; min-width: 200px; }
-
-  .product-name {
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 900;
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-  }
-
-  .product-desc {
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .product-price-wrap {
-    text-align: center;
-    flex-shrink: 0;
-  }
-
-  .price-label { color: var(--muted); font-size: 0.85rem; margin-bottom: 4px; }
-
-  .price {
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .price-currency { font-size: 1rem; color: var(--muted); margin-top: 4px; }
-
-  /* FEATURES */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1px;
-    background: var(--border);
-  }
-
-  .feature-item {
-    background: var(--card);
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .feat-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    background: rgba(0,212,255,0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
-
-  .feat-text { font-size: 0.9rem; font-weight: 600; }
-
-  /* BUY BUTTON */
-  .buy-section {
-    padding: 36px 40px;
-    text-align: center;
-  }
-
-  .btn-buy {
-    background: linear-gradient(135deg, var(--accent2), var(--accent));
-    color: white;
-    border: none;
-    padding: 18px 60px;
-    border-radius: 14px;
-    font-family: 'Cairo', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 10px 40px rgba(0,212,255,0.3);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-buy::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: white;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(0,212,255,0.4); }
-  .btn-buy:hover::after { opacity: 0.05; }
-  .btn-buy:active { transform: translateY(0); }
-
-  .guarantee {
-    margin-top: 16px;
-    color: var(--muted);
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-
-  /* MODAL */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(7,11,20,0.9);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow-y: auto;
-  }
-
-  .modal-overlay.active { display: flex; }
-
-  .modal {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    width: 100%;
-    max-width: 520px;
-    position: relative;
-    overflow: hidden;
-    animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    margin: auto;
-  }
-
-  .modal::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent2), var(--accent));
-  }
-
-  .modal-header {
-    padding: 28px 30px 20px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .modal-title {
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 900;
-    font-size: 1.4rem;
-    margin-bottom: 6px;
-  }
-
-  .modal-sub { color: var(--muted); font-size: 0.9rem; }
-
-  .close-btn {
-    position: absolute;
-    top: 20px; left: 20px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-  }
-
-  .close-btn:hover { background: rgba(255,255,255,0.1); color: var(--text); }
-
-  /* STEPS */
-  .steps-bar {
-    display: flex;
-    gap: 0;
-    padding: 20px 30px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .step-dot {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex: 1;
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  .step-dot.active { color: var(--accent); }
-  .step-dot.done { color: var(--success); }
-
-  .step-num {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem;
-    flex-shrink: 0;
-    transition: all 0.3s;
-  }
-
-  .step-dot.active .step-num {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: black;
-    font-weight: 700;
-  }
-
-  .step-dot.done .step-num {
-    background: var(--success);
-    border-color: var(--success);
-    color: black;
-  }
-
-  .step-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    align-self: center;
-    margin: 0 4px;
-  }
-
-  /* FORM */
-  .modal-body { padding: 28px 30px; }
-
-  .form-step { display: none; }
-  .form-step.active { display: block; }
-
-  .form-group { margin-bottom: 20px; }
-
-  label {
-    display: block;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--muted);
-    margin-bottom: 8px;
-    letter-spacing: 0.3px;
-  }
-
-  input, textarea {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    color: var(--text);
-    font-family: 'Cairo', sans-serif;
-    font-size: 0.95rem;
-    transition: all 0.2s;
-    outline: none;
-    direction: rtl;
-  }
-
-  input:focus, textarea:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
-  }
-
-  input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.6; }
-
-  .btn-next, .btn-submit {
-    width: 100%;
-    background: linear-gradient(135deg, var(--accent2), var(--accent));
-    color: white;
-    border: none;
-    padding: 16px;
-    border-radius: 12px;
-    font-family: 'Cairo', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 8px 30px rgba(0,212,255,0.25);
-    margin-top: 8px;
-  }
-
-  .btn-next:hover, .btn-submit:hover { opacity: 0.92; transform: translateY(-1px); }
-
-  /* BANK DETAILS */
-  .bank-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-
-  .bank-title {
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-weight: 600;
-    margin-bottom: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .bank-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .bank-row:last-child { border-bottom: none; }
-
-  .bank-key { color: var(--muted); font-size: 0.85rem; }
-
-  .bank-val {
-    font-weight: 700;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    direction: ltr;
-  }
-
-  .copy-btn {
-    background: rgba(0,212,255,0.1);
-    border: none;
-    color: var(--accent);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    cursor: pointer;
-    font-family: 'Cairo', sans-serif;
-    transition: all 0.2s;
-  }
-
-  .copy-btn:hover { background: rgba(0,212,255,0.2); }
-
-  .price-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255,184,0,0.08);
-    border: 1px solid rgba(255,184,0,0.2);
-    border-radius: 12px;
-    padding: 14px 18px;
-    margin-bottom: 20px;
-  }
-
-  .sum-label { color: var(--gold); font-weight: 600; font-size: 0.9rem; }
-  .sum-price { font-family: 'Tajawal', sans-serif; font-weight: 900; font-size: 1.4rem; color: var(--gold); }
-
-  /* SUCCESS */
-  .success-view {
-    text-align: center;
-    padding: 40px 30px;
-  }
-
-  .success-icon {
-    width: 80px; height: 80px;
-    background: rgba(0,230,118,0.1);
-    border: 2px solid rgba(0,230,118,0.3);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.2rem;
-    margin: 0 auto 24px;
-    animation: pulse 2s infinite;
-  }
-
-  .success-title {
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 900;
-    font-size: 1.6rem;
-    color: var(--success);
-    margin-bottom: 12px;
-  }
-
-  .success-msg {
-    color: var(--muted);
-    line-height: 1.8;
-    font-size: 0.95rem;
-  }
-
-  /* TRUST STRIP */
-  .trust-strip {
-    position: relative; z-index: 1;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    padding: 20px;
-    margin-top: -20px;
-    margin-bottom: 40px;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
-
-  .trust-item span { color: var(--accent); font-size: 1rem; }
-
-  /* ANIMATIONS */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes popIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0,230,118,0.3); }
-    50% { box-shadow: 0 0 0 14px rgba(0,230,118,0); }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 600px) {
-    nav { padding: 16px 20px; }
-    .product-banner { padding: 30px 24px; flex-direction: column; text-align: center; }
-    .product-price-wrap { margin: 0 auto; }
-    .buy-section { padding: 28px 24px; }
-    .modal-body { padding: 24px 20px; }
-    .modal-header { padding: 24px 20px 16px; }
-    .steps-bar { padding: 16px 20px; }
-    .step-dot span:not(.step-num) { display: none; }
-  }
-
-  /* Edit these fields - highlighted */
-  .editable-note {
-    background: rgba(255,184,0,0.06);
-    border: 1px dashed rgba(255,184,0,0.2);
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 0.78rem;
-    color: rgba(255,184,0,0.6);
-    margin-top: 8px;
-  }
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: ‘Cairo’, sans-serif;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* Grid BG */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image:
+linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+background-size: 50px 50px;
+pointer-events: none;
+z-index: 0;
+}
+
+.glow-orb {
+position: fixed;
+border-radius: 50%;
+filter: blur(120px);
+pointer-events: none;
+z-index: 0;
+}
+.orb1 { width: 500px; height: 500px; background: rgba(0,212,255,0.07); top: -100px; right: -100px; }
+.orb2 { width: 400px; height: 400px; background: rgba(123,94,255,0.07); bottom: 100px; left: -100px; }
+
+/* NAV */
+nav {
+position: relative; z-index: 10;
+display: flex; align-items: center; justify-content: space-between;
+padding: 20px 40px;
+border-bottom: 1px solid var(–border);
+backdrop-filter: blur(10px);
+background: rgba(7,11,20,0.8);
+}
+
+.logo {
+font-family: ‘Tajawal’, sans-serif;
+font-weight: 900;
+font-size: 1.4rem;
+background: linear-gradient(135deg, var(–accent), var(–accent2));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+letter-spacing: -0.5px;
+}
+
+.nav-badge {
+background: rgba(0,212,255,0.1);
+border: 1px solid rgba(0,212,255,0.3);
+color: var(–accent);
+padding: 6px 16px;
+border-radius: 100px;
+font-size: 0.8rem;
+font-weight: 600;
+}
+
+/* HERO */
+.hero {
+position: relative; z-index: 1;
+text-align: center;
+padding: 80px 20px 60px;
+}
+
+.hero-tag {
+display: inline-flex; align-items: center; gap: 8px;
+background: rgba(255,184,0,0.1);
+border: 1px solid rgba(255,184,0,0.3);
+color: var(–gold);
+padding: 8px 20px;
+border-radius: 100px;
+font-size: 0.85rem;
+font-weight: 600;
+margin-bottom: 30px;
+animation: fadeDown 0.6s ease;
+}
+
+.hero-tag::before { content: ‘⚡’; }
+
+h1 {
+font-family: ‘Tajawal’, sans-serif;
+font-weight: 900;
+font-size: clamp(2.2rem, 6vw, 4rem);
+line-height: 1.15;
+margin-bottom: 20px;
+animation: fadeDown 0.7s ease;
+}
+
+h1 span {
+background: linear-gradient(135deg, var(–accent), var(–accent2));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+font-size: 1.1rem;
+color: var(–muted);
+max-width: 500px;
+margin: 0 auto 40px;
+line-height: 1.8;
+animation: fadeDown 0.8s ease;
+}
+
+/* PRODUCT CARD */
+.product-wrapper {
+position: relative; z-index: 1;
+max-width: 800px;
+margin: 0 auto;
+padding: 0 20px 80px;
+}
+
+.product-card {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 24px;
+overflow: hidden;
+animation: fadeUp 0.8s ease;
+position: relative;
+}
+
+.product-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: linear-gradient(90deg, var(–accent2), var(–accent));
+}
+
+.product-banner {
+background: linear-gradient(135deg, #0D1525, #111C30);
+padding: 50px 40px;
+display: flex;
+align-items: center;
+gap: 30px;
+border-bottom: 1px solid var(–border);
+flex-wrap: wrap;
+}
+
+.product-icon {
+width: 90px; height: 90px;
+background: linear-gradient(135deg, var(–accent2), var(–accent));
+border-radius: 22px;
+display: flex; align-items: center; justify-content: center;
+font-size: 2.5rem;
+flex-shrink: 0;
+box-shadow: 0 20px 60px rgba(0,212,255,0.2);
+}
+
+.product-info { flex: 1; min-width: 200px; }
+
+.product-name {
+font-family: ‘Tajawal’, sans-serif;
+font-weight: 900;
+font-size: 1.8rem;
+margin-bottom: 8px;
+}
+
+.product-desc {
+color: var(–muted);
+font-size: 0.95rem;
+line-height: 1.7;
+}
+
+.product-price-wrap {
+text-align: center;
+flex-shrink: 0;
+}
+
+.price-label { color: var(–muted); font-size: 0.85rem; margin-bottom: 4px; }
+
+.price {
+font-family: ‘Tajawal’, sans-serif;
+font-weight: 900;
+font-size: 2.5rem;
+color: var(–gold);
+line-height: 1;
+}
+
+.price-currency { font-size: 1rem; color: var(–muted); margin-top: 4px; }
+
+/* FEATURES */
+.features-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 1px;
+background: var(–border);
+}
+
+.feature-item {
+background: var(–card);
+padding: 24px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.feat-icon {
+width: 40px; height: 40px;
+border-radius: 10px;
+background: rgba(0,212,255,0.1);
+display: flex; align-items: center; justify-content: center;
+font-size: 1.1rem;
+flex-shrink: 0;
+}
+
+.feat-text { font-size: 0.9rem; font-weight: 600; }
+
+/* BUY BUTTON */
+.buy-section {
+padding: 36px 40px;
+text-align: center;
+}
+
+.btn-buy {
+background: linear-gradient(135deg, var(–accent2), var(–accent));
+color: white;
+border: none;
+padding: 18px 60px;
+border-radius: 14px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 1.1rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s;
+box-shadow: 0 10px 40px rgba(0,212,255,0.3);
+position: relative;
+overflow: hidden;
+}
+
+.btn-buy::after {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: white;
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.btn-buy:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(0,212,255,0.4); }
+.btn-buy:hover::after { opacity: 0.05; }
+.btn-buy:active { transform: translateY(0); }
+
+.guarantee {
+margin-top: 16px;
+color: var(–muted);
+font-size: 0.85rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+}
+
+/* MODAL */
+.modal-overlay {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(7,11,20,0.9);
+backdrop-filter: blur(8px);
+z-index: 100;
+align-items: center;
+justify-content: center;
+padding: 20px;
+overflow-y: auto;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal {
+background: var(–card);
+border: 1px solid var(–border);
+border-radius: 24px;
+width: 100%;
+max-width: 520px;
+position: relative;
+overflow: hidden;
+animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+margin: auto;
+}
+
+.modal::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: linear-gradient(90deg, var(–accent2), var(–accent));
+}
+
+.modal-header {
+padding: 28px 30px 20px;
+border-bottom: 1px solid var(–border);
+}
+
+.modal-title {
+font-family: ‘Tajawal’, sans-serif;
+font-weight: 900;
+font-size: 1.4rem;
+margin-bottom: 6px;
+}
+
+.modal-sub { color: var(–muted); font-size: 0.9rem; }
+
+.close-btn {
+position: absolute;
+top: 20px; left: 20px;
+background: rgba(255,255,255,0.05);
+border: 1px solid var(–border);
+color: var(–muted);
+width: 36px; height: 36px;
+border-radius: 10px;
+cursor: pointer;
+font-size: 1.1rem;
+display: flex; align-items: center; justify-content: center;
+transition: all 0.2s;
+}
+
+.close-btn:hover { background: rgba(255,255,255,0.1); color: var(–text); }
+
+/* STEPS */
+.steps-bar {
+display: flex;
+gap: 0;
+padding: 20px 30px;
+border-bottom: 1px solid var(–border);
+}
+
+.step-dot {
+display: flex;
+align-items: center;
+gap: 8px;
+flex: 1;
+font-size: 0.8rem;
+color: var(–muted);
+font-weight: 600;
+}
+
+.step-dot.active { color: var(–accent); }
+.step-dot.done { color: var(–success); }
+
+.step-num {
+width: 26px; height: 26px;
+border-radius: 50%;
+background: rgba(255,255,255,0.05);
+border: 1px solid var(–border);
+display: flex; align-items: center; justify-content: center;
+font-size: 0.75rem;
+flex-shrink: 0;
+transition: all 0.3s;
+}
+
+.step-dot.active .step-num {
+background: var(–accent);
+border-color: var(–accent);
+color: black;
+font-weight: 700;
+}
+
+.step-dot.done .step-num {
+background: var(–success);
+border-color: var(–success);
+color: black;
+}
+
+.step-line {
+flex: 1;
+height: 1px;
+background: var(–border);
+align-self: center;
+margin: 0 4px;
+}
+
+/* FORM */
+.modal-body { padding: 28px 30px; }
+
+.form-step { display: none; }
+.form-step.active { display: block; }
+
+.form-group { margin-bottom: 20px; }
+
+label {
+display: block;
+font-size: 0.88rem;
+font-weight: 600;
+color: var(–muted);
+margin-bottom: 8px;
+letter-spacing: 0.3px;
+}
+
+input, textarea {
+width: 100%;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 14px 16px;
+color: var(–text);
+font-family: ‘Cairo’, sans-serif;
+font-size: 0.95rem;
+transition: all 0.2s;
+outline: none;
+direction: rtl;
+}
+
+input:focus, textarea:focus {
+border-color: var(–accent);
+box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+}
+
+input::placeholder, textarea::placeholder { color: var(–muted); opacity: 0.6; }
+
+.btn-next, .btn-submit {
+width: 100%;
+background: linear-gradient(135deg, var(–accent2), var(–accent));
+color: white;
+border: none;
+padding: 16px;
+border-radius: 12px;
+font-family: ‘Cairo’, sans-serif;
+font-size: 1rem;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.2s;
+box-shadow: 0 8px 30px rgba(0,212,255,0.25);
+margin-top: 8px;
+}
+
+.btn-next:hover, .btn-submit:hover { opacity: 0.92; transform: translateY(-1px); }
+
+/* BANK DETAILS */
+.bank-box {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 14px;
+padding: 20px;
+margin-bottom: 20px;
+}
+
+.bank-title {
+font-size: 0.8rem;
+color: var(–muted);
+font-weight: 600;
+margin-bottom: 14px;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+.bank-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 0;
+border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.bank-row:last-child { border-bottom: none; }
+
+.bank-key { color: var(–muted); font-size: 0.85rem; }
+
+.bank-val {
+font-weight: 700;
+font-size: 0.95rem;
+display: flex;
+align-items: center;
+gap: 8px;
+direction: ltr;
+}
+
+.copy-btn {
+background: rgba(0,212,255,0.1);
+border: none;
+color: var(–accent);
+padding: 4px 10px;
+border-radius: 6px;
+font-size: 0.75rem;
+cursor: pointer;
+font-family: ‘Cairo’, sans-serif;
+transition: all 0.2s;
+}
+
+.copy-btn:hover { background: rgba(0,212,255,0.2); }
+
+.price-summary {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: rgba(255,184,0,0.08);
+border: 1px solid rgba(255,184,0,0.2);
+border-radius: 12px;
+padding: 14px 18px;
+margin-bottom: 20px;
+}
+
+.sum-label { color: var(–gold); font-weight: 600; font-size: 0.9rem; }
+.sum-price { font-family: ‘Tajawal’, sans-serif; font-weight: 900; font-size: 1.4rem; color: var(–gold); }
+
+/* SUCCESS */
+.success-view {
+text-align: center;
+padding: 40px 30px;
+}
+
+.success-icon {
+width: 80px; height: 80px;
+background: rgba(0,230,118,0.1);
+border: 2px solid rgba(0,230,118,0.3);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 2.2rem;
+margin: 0 auto 24px;
+animation: pulse 2s infinite;
+}
+
+.success-title {
+font-family: ‘Tajawal’, sans-serif;
+font-weight: 900;
+font-size: 1.6rem;
+color: var(–success);
+margin-bottom: 12px;
+}
+
+.success-msg {
+color: var(–muted);
+line-height: 1.8;
+font-size: 0.95rem;
+}
+
+/* TRUST STRIP */
+.trust-strip {
+position: relative; z-index: 1;
+display: flex;
+justify-content: center;
+gap: 40px;
+flex-wrap: wrap;
+padding: 20px;
+margin-top: -20px;
+margin-bottom: 40px;
+}
+
+.trust-item {
+display: flex;
+align-items: center;
+gap: 8px;
+color: var(–muted);
+font-size: 0.85rem;
+}
+
+.trust-item span { color: var(–accent); font-size: 1rem; }
+
+/* ANIMATIONS */
+@keyframes fadeDown {
+from { opacity: 0; transform: translateY(-20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+from { opacity: 0; transform: scale(0.9); }
+to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+0%, 100% { box-shadow: 0 0 0 0 rgba(0,230,118,0.3); }
+50% { box-shadow: 0 0 0 14px rgba(0,230,118,0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+nav { padding: 16px 20px; }
+.product-banner { padding: 30px 24px; flex-direction: column; text-align: center; }
+.product-price-wrap { margin: 0 auto; }
+.buy-section { padding: 28px 24px; }
+.modal-body { padding: 24px 20px; }
+.modal-header { padding: 24px 20px 16px; }
+.steps-bar { padding: 16px 20px; }
+.step-dot span:not(.step-num) { display: none; }
+}
+
+/* Edit these fields - highlighted */
+.editable-note {
+background: rgba(255,184,0,0.06);
+border: 1px dashed rgba(255,184,0,0.2);
+border-radius: 8px;
+padding: 8px 12px;
+font-size: 0.78rem;
+color: rgba(255,184,0,0.6);
+margin-top: 8px;
+}
 </style>
+
 </head>
 <body>
 
@@ -623,12 +625,14 @@
 <div class="glow-orb orb2"></div>
 
 <!-- NAV -->
+
 <nav>
   <div class="logo">◈ No Limits</div>
   <div class="nav-badge">✦ شهادات أيفون</div>
 </nav>
 
 <!-- HERO -->
+
 <section class="hero">
   <div class="hero-tag">متاحة الآن · تفعيل خلال ٢٤ ساعة</div>
   <h1>شهادة أيفون<br><span>بدون حدود</span></h1>
@@ -638,6 +642,7 @@
 </section>
 
 <!-- TRUST -->
+
 <div class="trust-strip">
   <div class="trust-item"><span>⚡</span> تفعيل خلال ٢٤ ساعة</div>
   <div class="trust-item"><span>🔒</span> شهادة خاصة بجهازك</div>
@@ -646,175 +651,181 @@
 </div>
 
 <!-- PRODUCT -->
+
 <div class="product-wrapper">
   <div class="product-card">
 
-    <div class="product-banner">
-      <div class="product-icon">🍎</div>
-      <div class="product-info">
-        <div class="product-name">شهادة أيفون سنوية</div>
-        <div class="product-desc">
-          شهادة تطوير سنوية خاصة فيك — مرتبطة بـ UDID جهازك مباشرة، صلاحيتها سنة كاملة من تاريخ التفعيل.
-        </div>
-      </div>
-      <div class="product-price-wrap">
-        <div class="price-label">السعر</div>
-        <div class="price">٤٠</div>
-        <div class="price-currency">ريال سعودي</div>
-      </div>
+```
+<div class="product-banner">
+  <div class="product-icon">🍎</div>
+  <div class="product-info">
+    <div class="product-name">شهادة أيفون سنوية</div>
+    <div class="product-desc">
+      شهادة تطوير سنوية خاصة فيك — مرتبطة بـ UDID جهازك مباشرة، صلاحيتها سنة كاملة من تاريخ التفعيل.
     </div>
+  </div>
+  <div class="product-price-wrap">
+    <div class="price-label">السعر</div>
+    <div class="price">٤٠</div>
+    <div class="price-currency">ريال سعودي</div>
+  </div>
+</div>
 
-    <!-- FEATURES -->
-    <div class="features-grid">
-      <div class="feature-item">
-        <div class="feat-icon">📱</div>
-        <div class="feat-text">خاصة بجهازك فقط</div>
-      </div>
-      <div class="feature-item">
-        <div class="feat-icon">📅</div>
-        <div class="feat-text">صلاحية ١٢ شهراً</div>
-      </div>
-      <div class="feature-item">
-        <div class="feat-icon">⚡</div>
-        <div class="feat-text">تفعيل خلال ٢٤ ساعة</div>
-      </div>
-      <div class="feature-item">
-        <div class="feat-icon">💬</div>
-        <div class="feat-text">دعم فني مباشر</div>
-      </div>
-    </div>
+<!-- FEATURES -->
+<div class="features-grid">
+  <div class="feature-item">
+    <div class="feat-icon">📱</div>
+    <div class="feat-text">خاصة بجهازك فقط</div>
+  </div>
+  <div class="feature-item">
+    <div class="feat-icon">📅</div>
+    <div class="feat-text">صلاحية ١٢ شهراً</div>
+  </div>
+  <div class="feature-item">
+    <div class="feat-icon">⚡</div>
+    <div class="feat-text">تفعيل خلال ٢٤ ساعة</div>
+  </div>
+  <div class="feature-item">
+    <div class="feat-icon">💬</div>
+    <div class="feat-text">دعم فني مباشر</div>
+  </div>
+</div>
 
-    <!-- BUY -->
-    <div class="buy-section">
-      <button class="btn-buy" onclick="openModal()">
-        🛒 &nbsp; اشتري الآن — ٤٠ ريال
-      </button>
-      <div class="guarantee">🔒 تحويل بنكي آمن · التسليم خلال ٢٤ ساعة</div>
-    </div>
+<!-- BUY -->
+<div class="buy-section">
+  <button class="btn-buy" onclick="openModal()">
+    🛒 &nbsp; اشتري الآن — ٤٠ ريال
+  </button>
+  <div class="guarantee">🔒 تحويل بنكي آمن · التسليم خلال ٢٤ ساعة</div>
+</div>
+```
 
   </div>
 </div>
 
-
 <!-- MODAL -->
+
 <div class="modal-overlay" id="modal">
   <div class="modal">
 
-    <button class="close-btn" onclick="closeModal()">✕</button>
+```
+<button class="close-btn" onclick="closeModal()">✕</button>
 
-    <!-- Steps -->
-    <div class="steps-bar">
-      <div class="step-dot active" id="step-ind-1">
-        <div class="step-num">1</div>
-        <span>بياناتك</span>
+<!-- Steps -->
+<div class="steps-bar">
+  <div class="step-dot active" id="step-ind-1">
+    <div class="step-num">1</div>
+    <span>بياناتك</span>
+  </div>
+  <div class="step-line"></div>
+  <div class="step-dot" id="step-ind-2">
+    <div class="step-num">2</div>
+    <span>التحويل</span>
+  </div>
+  <div class="step-line"></div>
+  <div class="step-dot" id="step-ind-3">
+    <div class="step-num">3</div>
+    <span>التأكيد</span>
+  </div>
+</div>
+
+<!-- STEP 1: Info -->
+<div class="form-step active" id="step1">
+  <div class="modal-header">
+    <div class="modal-title">بيانات جهازك</div>
+    <div class="modal-sub">سيتم إرسال الشهادة على إيميلك بعد التحقق من التحويل</div>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>UDID الجهاز</label>
+      <input type="text" id="inp-udid" placeholder="00008110-000XXXXXXX..." dir="ltr" />
+    </div>
+    <div class="form-group">
+      <label>البريد الإلكتروني</label>
+      <input type="email" id="inp-email" placeholder="example@gmail.com" dir="ltr" />
+    </div>
+    <div class="form-group">
+      <label>البلد</label>
+      <input type="text" id="inp-country" placeholder="السعودية، الكويت، الإمارات..." />
+    </div>
+    <button class="btn-next" onclick="goStep2()">التالي ← التحويل البنكي</button>
+  </div>
+</div>
+
+<!-- STEP 2: Bank Transfer -->
+<div class="form-step" id="step2">
+  <div class="modal-header">
+    <div class="modal-title">التحويل البنكي</div>
+    <div class="modal-sub">حوّل المبلغ وأرفق صورة الحوالة</div>
+  </div>
+  <div class="modal-body">
+
+    <div class="price-summary">
+      <span class="sum-label">💳 المبلغ المطلوب</span>
+      <span class="sum-price">٤٠ ريال</span>
+    </div>
+
+    <div class="bank-box">
+      <div class="bank-title">بيانات الحساب البنكي</div>
+      <div class="bank-row">
+        <div class="bank-key">البنك</div>
+        <div class="bank-val">
+          برق / العربي
+          <button class="copy-btn" onclick="copyText('برق / العربي', this)">نسخ</button>
+        </div>
       </div>
-      <div class="step-line"></div>
-      <div class="step-dot" id="step-ind-2">
-        <div class="step-num">2</div>
-        <span>التحويل</span>
+      <div class="bank-row">
+        <div class="bank-key">الاسم</div>
+        <div class="bank-val">
+          عبدالرحمن
+          <button class="copy-btn" onclick="copyText('عبدالرحمن', this)">نسخ</button>
+        </div>
       </div>
-      <div class="step-line"></div>
-      <div class="step-dot" id="step-ind-3">
-        <div class="step-num">3</div>
-        <span>التأكيد</span>
+      <div class="bank-row">
+        <div class="bank-key">رقم IBAN</div>
+        <div class="bank-val">
+          <span id="iban-val">SA0530100991100780280235</span>
+          <button class="copy-btn" onclick="copyText(document.getElementById('iban-val').textContent, this)">نسخ</button>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 1: Info -->
-    <div class="form-step active" id="step1">
-      <div class="modal-header">
-        <div class="modal-title">بيانات جهازك</div>
-        <div class="modal-sub">سيتم إرسال الشهادة على إيميلك بعد التحقق من التحويل</div>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>UDID الجهاز</label>
-          <input type="text" id="inp-udid" placeholder="00008110-000XXXXXXX..." dir="ltr" />
-        </div>
-        <div class="form-group">
-          <label>البريد الإلكتروني</label>
-          <input type="email" id="inp-email" placeholder="example@gmail.com" dir="ltr" />
-        </div>
-        <div class="form-group">
-          <label>البلد</label>
-          <input type="text" id="inp-country" placeholder="السعودية، الكويت، الإمارات..." />
-        </div>
-        <button class="btn-next" onclick="goStep2()">التالي ← التحويل البنكي</button>
-      </div>
+    <div class="form-group">
+      <label>صورة إيصال الحوالة</label>
+      <input type="file" id="inp-receipt" accept="image/*" />
     </div>
 
-    <!-- STEP 2: Bank Transfer -->
-    <div class="form-step" id="step2">
-      <div class="modal-header">
-        <div class="modal-title">التحويل البنكي</div>
-        <div class="modal-sub">حوّل المبلغ وأرفق صورة الحوالة</div>
-      </div>
-      <div class="modal-body">
-
-        <div class="price-summary">
-          <span class="sum-label">💳 المبلغ المطلوب</span>
-          <span class="sum-price">٤٠ ريال</span>
-        </div>
-
-        <div class="bank-box">
-          <div class="bank-title">بيانات الحساب البنكي</div>
-          <div class="bank-row">
-            <div class="bank-key">البنك</div>
-            <div class="bank-val">
-              برق / العربي
-              <button class="copy-btn" onclick="copyText('برق / العربي', this)">نسخ</button>
-            </div>
-          </div>
-          <div class="bank-row">
-            <div class="bank-key">الاسم</div>
-            <div class="bank-val">
-              عبدالرحمن
-              <button class="copy-btn" onclick="copyText('عبدالرحمن', this)">نسخ</button>
-            </div>
-          </div>
-          <div class="bank-row">
-            <div class="bank-key">رقم IBAN</div>
-            <div class="bank-val">
-              <span id="iban-val">SA0530100991100780280235</span>
-              <button class="copy-btn" onclick="copyText(document.getElementById('iban-val').textContent, this)">نسخ</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>صورة إيصال الحوالة</label>
-          <input type="file" id="inp-receipt" accept="image/*" />
-        </div>
-
-        <div class="form-group">
-          <label>ملاحظة إضافية (اختياري)</label>
-          <textarea id="inp-note" rows="3" placeholder="أي تفاصيل إضافية..."></textarea>
-        </div>
-
-        <div id="form-alert" style="display:none;background:rgba(255,80,80,0.1);border:1px solid rgba(255,80,80,0.3);color:#ff6b6b;border-radius:10px;padding:12px 16px;font-size:0.9rem;margin-bottom:12px;text-align:center;"></div>
-
-        <button class="btn-submit" onclick="goStep3()">✅ &nbsp; أرسل طلبي</button>
-      </div>
+    <div class="form-group">
+      <label>ملاحظة إضافية (اختياري)</label>
+      <textarea id="inp-note" rows="3" placeholder="أي تفاصيل إضافية..."></textarea>
     </div>
 
-    <!-- STEP 3: Success -->
-    <div class="form-step" id="step3">
-      <div class="success-view">
-        <div class="success-icon">✅</div>
-        <div class="success-title">تم استلام طلبك!</div>
-        <p class="success-msg">
-          شكراً على طلبك! 🎉<br><br>
-          سيتم مراجعة التحويل وإرسال الشهادة إلى<br>
-          <strong id="conf-email" style="color:var(--accent);direction:ltr;display:inline-block;"></strong><br><br>
-          خلال مدة أقصاها <strong style="color:var(--gold);">٢٤ ساعة</strong> من الآن.
-        </p>
-      </div>
-    </div>
+    <div id="form-alert" style="display:none;background:rgba(255,80,80,0.1);border:1px solid rgba(255,80,80,0.3);color:#ff6b6b;border-radius:10px;padding:12px 16px;font-size:0.9rem;margin-bottom:12px;text-align:center;"></div>
+
+    <button class="btn-submit" onclick="goStep3()">✅ &nbsp; أرسل طلبي</button>
+  </div>
+</div>
+
+<!-- STEP 3: Success -->
+<div class="form-step" id="step3">
+  <div class="success-view">
+    <div class="success-icon">✅</div>
+    <div class="success-title">تم استلام طلبك!</div>
+    <p class="success-msg">
+      شكراً على طلبك! 🎉<br><br>
+      سيتم مراجعة التحويل وإرسال الشهادة إلى<br>
+      <strong id="conf-email" style="color:var(--accent);direction:ltr;display:inline-block;"></strong><br><br>
+      خلال مدة أقصاها <strong style="color:var(--gold);">٢٤ ساعة</strong> من الآن.
+    </p>
+  </div>
+</div>
+```
 
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
   // ============================================================
   //  ⚙️  إعدادات الإشعارات — عدّل هنا فقط
@@ -937,15 +948,15 @@ ${data.note ? `📝 *ملاحظة:* ${data.note}` : ''}
 _راجع الحوالة وأرسل الشهادة ✅_`;
 
     try {
-      const url = `https://api.telegram.org/bot${CONFIG.telegram.botToken}/sendMessage`
-        + `?chat_id=${encodeURIComponent(CONFIG.telegram.chatId)}`
-        + `&text=${encodeURIComponent(msg)}`
-        + `&parse_mode=Markdown`;
-
-      await new Promise((resolve) => {
-        const img = new Image();
-        img.onload = img.onerror = resolve;
-        img.src = url;
+      const url = `https://api.telegram.org/bot${CONFIG.telegram.botToken}/sendMessage`;
+      await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: CONFIG.telegram.chatId,
+          text: msg,
+          parse_mode: 'Markdown'
+        })
       });
     } catch(e) { console.error('Telegram error:', e); }
   }
